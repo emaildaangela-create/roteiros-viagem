@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paris 2026</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__image" aria-hidden="true"></div>
+      <nav class="topbar" aria-label="Navegação principal">
+        <div>
+          <p class="eyebrow">Paris, 03-08 setembro 2026</p>
+          <h1>Paris 2026</h1>
+        </div>
+        <button class="ghost-button" id="printButton" type="button">Imprimir</button>
+      </nav>
+      <section class="hero__content">
+        <p class="kicker">Bastille-Charonne, 11e</p>
+        <h2>Agenda da viagem</h2>
+        <p>
+          Dias, horários, escolhas e informações práticas em um só lugar.
+        </p>
+      </section>
+    </header>
+
+    <main class="shell">
+      <section class="panel base-panel" aria-labelledby="baseTitle">
+        <div>
+          <p class="eyebrow">Base</p>
+          <h2 id="baseTitle">Airbnb: 1 Rue Keller, 75011 Paris</h2>
+        </div>
+        <div class="base-grid">
+          <span><strong>Bairro:</strong> Bastille-Charonne / 11e</span>
+          <span><strong>Metrô próximo:</strong> Bréguet-Sabin, Bastille, Voltaire</span>
+          <span><strong>Uso:</strong> tempos abaixo partem desta base</span>
+        </div>
+      </section>
+
+      <section class="panel calendar-panel" aria-labelledby="calendarTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Calendário</p>
+            <h2 id="calendarTitle">Dias da viagem</h2>
+          </div>
+          <span class="trip-chip">6 dias</span>
+        </div>
+        <div class="day-grid" id="dayGrid"></div>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel day-summary" id="daySummary" aria-live="polite"></aside>
+
+        <section class="panel timeline-panel" aria-labelledby="timelineTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" id="activeDateLabel">Dia selecionado</p>
+              <h2 id="timelineTitle">Agenda do dia</h2>
+            </div>
+            <div class="filter-row" id="filterRow" aria-label="Filtros"></div>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+
+        <aside class="panel detail-panel" id="detailPanel" aria-live="polite"></aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
