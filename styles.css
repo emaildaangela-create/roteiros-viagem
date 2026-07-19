@@ -48,6 +48,16 @@ a {
   text-decoration: none;
 }
 
+.install-button {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fffdf8;
+}
+
+.install-button[hidden] {
+  display: none;
+}
+
 .hero {
   min-height: 440px;
   position: relative;
