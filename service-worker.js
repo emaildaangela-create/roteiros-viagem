@@ -1,4 +1,4 @@
-const CACHE_NAME = 'roteiros-europa-v3';
+const CACHE_NAME = 'roteiros-europa-v4';
 const APP_SHELL = [
   './',
   './index.html',
@@ -12,7 +12,7 @@ const APP_SHELL = [
   './frances.js',
   './pwa.js',
   './manifest.webmanifest',
-  './assets/paris-hero-small.jpg',
+  './assets/paris-hero-large.jpg',
   './assets/italy-hero.jpg',
   './assets/app-icon-192.png',
   './assets/app-icon-512.png'
