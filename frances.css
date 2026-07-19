@@ -111,6 +111,173 @@
   margin-top: 24px;
 }
 
+.practice-section {
+  margin-top: 24px;
+}
+
+.practice-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.practice-heading h2,
+.game-card h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.game-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.game-stats span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: var(--paper-strong);
+  color: var(--green);
+  font-size: 0.82rem;
+}
+
+.game-modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.game-mode,
+.answer-list button,
+.word-bank button,
+.check-button,
+.secondary-game-button,
+.audio-challenge {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 13px;
+  background: var(--paper-strong);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.game-mode.is-active,
+.check-button {
+  border-color: var(--green);
+  background: var(--green);
+  color: white;
+}
+
+.game-card {
+  min-height: 270px;
+  padding: clamp(18px, 4vw, 30px);
+}
+
+.game-card h3 {
+  max-width: 760px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.25;
+}
+
+.game-label {
+  margin: 0 0 10px;
+  color: var(--burgundy);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.answer-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.answer-list button {
+  text-align: left;
+}
+
+.answer-list button:hover,
+.word-bank button:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+}
+
+.audio-challenge {
+  margin: 12px 0 8px;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.sentence-builder {
+  min-height: 62px;
+  margin: 18px 0 12px;
+  border-bottom: 2px solid var(--line);
+  padding: 14px 4px;
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+
+.sentence-builder span {
+  color: var(--muted);
+}
+
+.word-bank,
+.builder-actions,
+.feedback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.word-bank button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.builder-actions,
+.feedback-actions {
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.check-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.game-feedback {
+  border-left: 5px solid;
+  padding-left: 18px;
+}
+
+.game-feedback.is-correct { border-color: #2f7d58; }
+.game-feedback.is-wrong { border-color: var(--burgundy); }
+
+.game-result {
+  margin: 0 0 10px;
+  color: var(--green);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.is-wrong .game-result { color: var(--burgundy); }
+
+.feedback-pronunciation {
+  color: var(--burgundy);
+  font-weight: 850;
+}
+
 .results-heading {
   margin-bottom: 14px;
 }
@@ -199,7 +366,21 @@
   }
 
   .teacher-note,
-  .phrase-grid {
+  .phrase-grid,
+  .answer-list {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .game-stats {
+    justify-content: flex-start;
+  }
+
+  .game-modes {
     grid-template-columns: 1fr;
   }
 }
