@@ -47,7 +47,6 @@ const situations = [
     f('Você','C’est à emporter.','cé ta an-por-tê.','É para viagem.'),
     f('Você','C’est pour manger ici.','cé pur man-jê i-ci.','É para comer aqui.'),
     f('Você','Je peux avoir un sac, s’il vous plaît ?','jâ pö a-vuár ãn sac, sil vu plé?','Posso pegar uma sacola, por favor?'),
-    f('Você','Où sont les produits sans lactose ?','u sõ lê pro-duí san lac-tóz?','Onde estão os produtos sem lactose?'),
     f('Você','Je voudrais deux cents grammes de ce fromage.','jâ vu-dré dö san grám dâ sâ fro-máj.','Eu gostaria de duzentos gramas deste queijo.'),
     h('Vocês podem ouvir','Avec ceci ?','a-véc sâ-ci?','Algo mais?'),
     h('Vocês podem ouvir','Sur place ou à emporter ?','sür pláss u a an-por-tê?','Para comer aqui ou para viagem?'),
@@ -64,15 +63,18 @@ const situations = [
     f('Rodrigo','Je vais prendre le poisson du jour.','jâ vé pran-drâ lâ puá-sõ dü júr.','Eu vou querer o peixe do dia.'),
     f('Valentina','Je voudrais le menu enfant, s’il vous plaît.','jâ vu-dré lâ mâ-nü an-fan, sil vu plé.','Eu gostaria do menu infantil, por favor.'),
     f('Você','Sans oignons, s’il vous plaît.','san o-nhõ, sil vu plé.','Sem cebola, por favor.'),
-    f('Você','La viande bien cuite, s’il vous plaît.','la vi-ãnd biãn cuít, sil vu plé.','A carne bem passada, por favor.'),
+    f('Você','Bleu, s’il vous plaît.','blö, sil vu plé.','Selada por fora e quase crua por dentro, por favor.'),
+    f('Você','Saignant, s’il vous plaît.','sê-nhã, sil vu plé.','Malpassada, por favor.'),
+    f('Você','À point, s’il vous plaît.','a puãn, sil vu plé.','Ao ponto, por favor.'),
+    f('Você','Bien cuit, s’il vous plaît.','biãn cuí, sil vu plé.','Bem-passada, por favor.'),
     f('Você','Est-ce que ce plat est épicé ?','és-câ sâ plá é té-pi-cê?','Este prato é apimentado?'),
-    f('Você','Elle est allergique aux noix.','él é ta-lér-jic ô nuá.','Ela é alérgica a nozes.'),
     f('Você','Pourrions-nous avoir une carafe d’eau ?','pu-ri-õ nu za-vuár ün ca-ráf dô?','Poderíamos receber uma jarra de água?'),
     f('Você','Encore du pain, s’il vous plaît.','an-cór dü pãn, sil vu plé.','Mais pão, por favor.'),
     f('Você','L’addition, s’il vous plaît.','la-di-ci-õ, sil vu plé.','A conta, por favor.'),
     f('Você','Nous pouvons payer séparément ?','nu pu-võ pê-iê sê-pa-rê-mãn?','Podemos pagar separadamente?'),
     h('Vocês podem ouvir','Vous avez choisi ?','vu za-vê chuá-zi?','Vocês já escolheram?'),
     h('Vocês podem ouvir','Quelle cuisson pour la viande ?','quél cui-sõ pur la vi-ãnd?','Qual o ponto da carne?'),
+    h('Vocês podem ouvir','Bleu, saignant, à point ou bien cuit ?','blö, sê-nhã, a puãn u biãn cuí?','Selada, malpassada, ao ponto ou bem-passada?'),
     h('Vocês podem ouvir','Le plat du jour, c’est…','lâ plá dü júr, cé…','O prato do dia é…'),
     h('Vocês podem ouvir','Ça vous a plu ?','sá vu za plü?','Vocês gostaram?'),
     h('Vocês podem ouvir','Le service est compris.','lâ sér-víss é cõ-prí.','O serviço está incluído.')
@@ -128,7 +130,6 @@ const situations = [
     f('Você','Elle a de la fièvre.','él a dâ la fi-évr.','Ela está com febre.'),
     f('Você','Elle a mal au ventre.','él a mal ô van-trâ.','Ela está com dor de barriga.'),
     f('Você','J’ai mal à la tête.','jê mal a la tét.','Estou com dor de cabeça.'),
-    f('Você','Il est allergique à…','il é ta-lér-jic a…','Ele é alérgico a…'),
     f('Você','C’est une urgence.','cé tün ür-jãns.','É uma emergência.'),
     f('Você','Appelez une ambulance, s’il vous plaît.','a-plê ün an-bü-lãns, sil vu plé.','Chame uma ambulância, por favor.'),
     f('Valentina','J’ai perdu mes parents.','jê pér-dü mê pa-rãn.','Eu perdi meus pais.'),
@@ -175,5 +176,92 @@ function speak(text){
   window.speechSynthesis.speak(utterance);
 }
 
+const progressKey='frances-game-progress';
+const practiceItems=situations.flatMap(group=>group.phrases.map(item=>({...item,situation:group.label})));
+const speakingItems=practiceItems.filter(item=>!item.heard);
+const buildItems=speakingItems.filter(item=>{
+  const words=item.fr.trim().split(/\s+/).length;
+  return words>=3&&words<=10;
+});
+let gameMode='translate';
+let gameQuestion=null;
+let gameAnswered=false;
+let progress=loadProgress();
+
+function loadProgress(){
+  try{return{xp:0,streak:0,correct:0,attempted:0,...JSON.parse(localStorage.getItem(progressKey)||'{}')};}
+  catch{return{xp:0,streak:0,correct:0,attempted:0};}
+}
+
+function saveProgress(){
+  localStorage.setItem(progressKey,JSON.stringify(progress));
+  $('#gameXp').textContent=progress.xp;
+  $('#gameStreak').textContent=progress.streak;
+  $('#gameAccuracy').textContent=progress.attempted?`${Math.round(progress.correct/progress.attempted*100)}%`:'0%';
+}
+
+function shuffle(items){
+  const copy=[...items];
+  for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
+  return copy;
+}
+
+function choicesFor(item,field){
+  const alternatives=shuffle(practiceItems.filter(candidate=>candidate.fr!==item.fr&&candidate[field]!==item[field]));
+  return shuffle([item,...alternatives.slice(0,3)]).map(candidate=>({label:candidate[field],correct:candidate.fr===item.fr}));
+}
+
+function nextQuestion(){
+  gameAnswered=false;
+  const pool=gameMode==='build'?buildItems:speakingItems;
+  const item=pool[Math.floor(Math.random()*pool.length)];
+  gameQuestion={item};
+  if(gameMode==='translate')gameQuestion.choices=choicesFor(item,'fr');
+  if(gameMode==='listen')gameQuestion.choices=choicesFor(item,'pt');
+  if(gameMode==='build'){
+    gameQuestion.tokens=shuffle(item.fr.trim().split(/\s+/).map((word,index)=>({word,index})));
+    gameQuestion.selected=[];
+  }
+  renderGame();
+}
+
+function renderGame(){
+  const card=$('#gameCard');
+  const {item}=gameQuestion;
+  if(gameMode==='translate'){
+    card.innerHTML=`<p class="game-label">Escolha a frase em francês</p><h3>${item.pt}</h3><div class="answer-list">${gameQuestion.choices.map((choice,index)=>`<button type="button" data-game-answer="${index}" lang="fr">${choice.label}</button>`).join('')}</div>`;
+  }else if(gameMode==='listen'){
+    card.innerHTML=`<p class="game-label">Escute e escolha o significado</p><button class="audio-challenge" type="button" id="playChallenge">🔊 Ouvir em francês</button><div class="answer-list">${gameQuestion.choices.map((choice,index)=>`<button type="button" data-game-answer="${index}">${choice.label}</button>`).join('')}</div>`;
+    $('#playChallenge').onclick=()=>speak(item.fr);
+  }else{
+    const selected=gameQuestion.selected.map(index=>item.fr.trim().split(/\s+/)[index]).join(' ');
+    card.innerHTML=`<p class="game-label">Monte esta frase em francês</p><h3>${item.pt}</h3><div class="sentence-builder" aria-live="polite">${selected||'<span>Toque nas palavras na ordem correta</span>'}</div><div class="word-bank">${gameQuestion.tokens.map(token=>`<button type="button" data-word-index="${token.index}" ${gameQuestion.selected.includes(token.index)?'disabled':''}>${token.word}</button>`).join('')}</div><div class="builder-actions"><button class="secondary-game-button" type="button" id="clearSentence">Limpar</button><button class="check-button" type="button" id="checkSentence" ${gameQuestion.selected.length?'':'disabled'}>Conferir</button></div>`;
+    document.querySelectorAll('[data-word-index]').forEach(button=>button.onclick=()=>{gameQuestion.selected.push(Number(button.dataset.wordIndex));renderGame();});
+    $('#clearSentence').onclick=()=>{gameQuestion.selected=[];renderGame();};
+    $('#checkSentence').onclick=()=>finishAnswer(gameQuestion.selected.every((value,index)=>value===index)&&gameQuestion.selected.length===item.fr.trim().split(/\s+/).length);
+  }
+  document.querySelectorAll('[data-game-answer]').forEach(button=>button.onclick=()=>finishAnswer(gameQuestion.choices[Number(button.dataset.gameAnswer)].correct));
+}
+
+function finishAnswer(correct){
+  if(gameAnswered)return;
+  gameAnswered=true;
+  progress.attempted+=1;
+  if(correct){progress.correct+=1;progress.streak+=1;progress.xp+=10;}else{progress.streak=0;}
+  saveProgress();
+  const {item}=gameQuestion;
+  $('#gameCard').innerHTML=`<div class="game-feedback ${correct?'is-correct':'is-wrong'}"><p class="game-result">${correct?'✓ Muito bem! +10 XP':'Quase! Veja a resposta:'}</p><h3 lang="fr">${item.fr}</h3><p class="feedback-pronunciation">Pronúncia: ${item.pronunciation}</p><p>${item.pt}</p><div class="feedback-actions"><button class="listen-button" type="button" id="hearAnswer">🔊 Ouvir</button><button class="check-button" type="button" id="nextQuestion">Próxima</button></div></div>`;
+  $('#hearAnswer').onclick=()=>speak(item.fr);
+  $('#nextQuestion').onclick=nextQuestion;
+}
+
+document.querySelectorAll('[data-game-mode]').forEach(button=>button.onclick=()=>{
+  gameMode=button.dataset.gameMode;
+  document.querySelectorAll('[data-game-mode]').forEach(item=>item.classList.toggle('is-active',item===button));
+  nextQuestion();
+});
+
 $('#phraseSearch').addEventListener('input',render);
 render();
+saveProgress();
+nextQuestion();

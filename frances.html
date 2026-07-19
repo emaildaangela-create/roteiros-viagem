@@ -52,6 +52,26 @@
         <div class="situation-filters" id="situationFilters"></div>
       </section>
 
+      <section class="practice-section" aria-labelledby="practiceTitle">
+        <div class="practice-heading">
+          <div>
+            <p class="eyebrow">Treino estilo Duolingo</p>
+            <h2 id="practiceTitle">Pratique até sair naturalmente</h2>
+          </div>
+          <div class="game-stats" aria-label="Seu progresso">
+            <span><strong id="gameXp">0</strong> XP</span>
+            <span>🔥 <strong id="gameStreak">0</strong> seguidas</span>
+            <span><strong id="gameAccuracy">0%</strong> acertos</span>
+          </div>
+        </div>
+        <div class="game-modes" aria-label="Escolha o tipo de treino">
+          <button class="game-mode is-active" type="button" data-game-mode="translate">Traduza</button>
+          <button class="game-mode" type="button" data-game-mode="listen">Escute</button>
+          <button class="game-mode" type="button" data-game-mode="build">Monte a frase</button>
+        </div>
+        <div class="panel game-card" id="gameCard"></div>
+      </section>
+
       <section class="phrase-results" aria-live="polite">
         <div class="results-heading">
           <p class="eyebrow" id="resultCount"></p>
