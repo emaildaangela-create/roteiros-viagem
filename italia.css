@@ -1,0 +1,41 @@
+@import url("styles.css");
+
+:root {
+  --green: #315a48;
+  --green-soft: #dce9df;
+  --burgundy: #9a3f35;
+  --blue: #326a78;
+  --gold: #c4933f;
+  --rose: #d47b62;
+  --hero-image: none;
+}
+
+.italy-hero .hero__image {
+  background:
+    radial-gradient(circle at 78% 34%, rgba(255, 249, 226, 0.9) 0 7%, transparent 7.2%),
+    linear-gradient(135deg, rgba(251, 247, 239, 0.97) 0 38%, rgba(238, 211, 166, 0.74) 38% 55%, rgba(77, 133, 142, 0.82) 55% 74%, rgba(49, 90, 72, 0.92) 74% 100%);
+}
+
+.trip-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.trip-actions .ghost-button {
+  text-decoration: none;
+}
+
+.day-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@media (max-width: 720px) {
+  .trip-actions {
+    width: 100%;
+  }
+
+  .trip-actions .ghost-button {
+    width: auto;
+    flex: 1;
+  }
+}
