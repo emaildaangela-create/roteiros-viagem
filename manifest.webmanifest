@@ -1,0 +1,47 @@
+{
+  "name": "Roteiros Europa 2026",
+  "short_name": "Europa 2026",
+  "description": "Roteiros de Paris e do sul da Itália com agenda, logística e francês prático.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fbf7ef",
+  "theme_color": "#174a3a",
+  "categories": ["travel", "lifestyle", "education"],
+  "icons": [
+    {
+      "src": "assets/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Paris",
+      "short_name": "Paris",
+      "url": "./index.html",
+      "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Sul da Itália",
+      "short_name": "Itália",
+      "url": "./italia.html",
+      "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Francês para a viagem",
+      "short_name": "Francês",
+      "url": "./frances.html",
+      "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
