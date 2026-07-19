@@ -12,7 +12,7 @@
   --rose: #c96e64;
   --shadow: 0 10px 28px rgba(36, 31, 26, 0.1);
   --radius: 8px;
-  --hero-image: url("assets/paris-hero-small.jpg");
+  --hero-image: url("assets/paris-hero-large.jpg");
   color-scheme: light;
 }
 
@@ -70,9 +70,9 @@ a {
   inset: 0;
   background-color: #efe2d2;
   background:
-    linear-gradient(90deg, rgba(251, 247, 239, 0.88) 0%, rgba(251, 247, 239, 0.58) 36%, rgba(251, 247, 239, 0.02) 100%),
-    linear-gradient(0deg, rgba(40, 37, 32, 0.06), rgba(40, 37, 32, 0)),
-    var(--hero-image) right center / auto 100% no-repeat;
+    linear-gradient(90deg, rgba(251, 247, 239, 0.97) 0%, rgba(251, 247, 239, 0.84) 34%, rgba(251, 247, 239, 0.24) 62%, rgba(40, 37, 32, 0.06) 100%),
+    linear-gradient(0deg, rgba(40, 37, 32, 0.12), transparent 46%),
+    var(--hero-image) 62% center / cover no-repeat;
 }
 
 .topbar,
@@ -658,9 +658,9 @@ body.modal-open {
 
   .hero__image {
     background:
-      linear-gradient(90deg, rgba(251, 247, 239, 0.92) 0%, rgba(251, 247, 239, 0.68) 48%, rgba(251, 247, 239, 0.12) 100%),
-      linear-gradient(0deg, rgba(40, 37, 32, 0.08), rgba(40, 37, 32, 0)),
-      var(--hero-image) right center / auto 100% no-repeat;
+      linear-gradient(90deg, rgba(251, 247, 239, 0.96) 0%, rgba(251, 247, 239, 0.82) 52%, rgba(251, 247, 239, 0.22) 100%),
+      linear-gradient(0deg, rgba(40, 37, 32, 0.16), transparent 50%),
+      var(--hero-image) 66% center / cover no-repeat;
   }
 
   .shell {
@@ -797,9 +797,9 @@ body.modal-open {
 
   .hero__image {
     background:
-      linear-gradient(90deg, rgba(251, 247, 239, 0.94) 0%, rgba(251, 247, 239, 0.76) 58%, rgba(251, 247, 239, 0.22) 100%),
-      linear-gradient(0deg, rgba(40, 37, 32, 0.08), rgba(40, 37, 32, 0)),
-      var(--hero-image) right center / auto 100% no-repeat;
+      linear-gradient(90deg, rgba(251, 247, 239, 0.95) 0%, rgba(251, 247, 239, 0.78) 60%, rgba(251, 247, 239, 0.2) 100%),
+      linear-gradient(0deg, rgba(40, 37, 32, 0.18), transparent 50%),
+      var(--hero-image) 68% center / cover no-repeat;
   }
 
   .base-panel,
