@@ -7,13 +7,14 @@
   --blue: #326a78;
   --gold: #c4933f;
   --rose: #d47b62;
-  --hero-image: none;
+  --hero-image: url("assets/italy-hero.jpg");
 }
 
 .italy-hero .hero__image {
   background:
-    radial-gradient(circle at 78% 34%, rgba(255, 249, 226, 0.9) 0 7%, transparent 7.2%),
-    linear-gradient(135deg, rgba(251, 247, 239, 0.97) 0 38%, rgba(238, 211, 166, 0.74) 38% 55%, rgba(77, 133, 142, 0.82) 55% 74%, rgba(49, 90, 72, 0.92) 74% 100%);
+    linear-gradient(90deg, rgba(251, 247, 239, 0.97) 0%, rgba(251, 247, 239, 0.86) 34%, rgba(251, 247, 239, 0.28) 62%, rgba(40, 37, 32, 0.08) 100%),
+    linear-gradient(0deg, rgba(40, 37, 32, 0.12), transparent 45%),
+    var(--hero-image) 62% center / cover no-repeat;
 }
 
 .trip-actions {
@@ -29,7 +30,28 @@
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
+.day-card,
+.day-card strong,
+.day-card time {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+@media (max-width: 1120px) {
+  .day-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
+  .italy-hero .hero__image {
+    background:
+      linear-gradient(90deg, rgba(251, 247, 239, 0.96) 0%, rgba(251, 247, 239, 0.82) 52%, rgba(251, 247, 239, 0.22) 100%),
+      linear-gradient(0deg, rgba(40, 37, 32, 0.16), transparent 50%),
+      var(--hero-image) 66% center / cover no-repeat;
+  }
+
   .trip-actions {
     width: 100%;
   }
@@ -37,5 +59,22 @@
   .trip-actions .ghost-button {
     width: auto;
     flex: 1;
+  }
+
+  .day-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 460px) {
+  .italy-hero .hero__image {
+    background:
+      linear-gradient(90deg, rgba(251, 247, 239, 0.95) 0%, rgba(251, 247, 239, 0.78) 60%, rgba(251, 247, 239, 0.2) 100%),
+      linear-gradient(0deg, rgba(40, 37, 32, 0.18), transparent 50%),
+      var(--hero-image) 68% center / cover no-repeat;
+  }
+
+  .day-grid {
+    grid-template-columns: 1fr;
   }
 }
