@@ -37,6 +37,17 @@ a {
   font: inherit;
 }
 
+.top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.top-actions .ghost-button {
+  text-decoration: none;
+}
+
 .hero {
   min-height: 440px;
   position: relative;
@@ -629,6 +640,15 @@ a {
 
   .topbar h1 {
     font-size: 2rem;
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .top-actions .ghost-button {
+    width: auto;
   }
 
   .hero__content {
