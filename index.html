@@ -71,10 +71,15 @@
           </div>
           <div class="timeline" id="timeline"></div>
         </section>
-
-        <aside class="panel detail-panel" id="detailPanel" aria-live="polite"></aside>
       </section>
     </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="panel modal-shell">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Fechar">✕</button>
+        <div class="detail-panel" id="detailPanel" aria-live="polite"></div>
+      </div>
+    </div>
 
     <script src="app.js"></script>
     <script src="pwa.js"></script>
