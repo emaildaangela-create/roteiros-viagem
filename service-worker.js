@@ -1,4 +1,4 @@
-const CACHE_NAME = 'roteiros-europa-v6';
+const CACHE_NAME = 'roteiros-europa-v7';
 const APP_SHELL = [
   './',
   './index.html',
