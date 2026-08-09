@@ -9,6 +9,10 @@ const monopoliBase = {
   title:'Color Dream Residence — Monopoli',
   facts:['<strong>Bairro:</strong> centro histórico de Monopoli','<strong>Período:</strong> 13-18 setembro · 5 noites','<strong>Uso:</strong> carro fica fora da ZTL; bate-voltas partem desta base']
 };
+const cdgBase = {
+  title:'Novotel Paris Charles-de-Gaulle Airport — Roissypôle',
+  facts:['<strong>Período:</strong> 18-19 setembro · 1 noite','<strong>Acesso:</strong> CDGVAL gratuito entre Roissypôle e Terminal 2','<strong>Uso:</strong> pernoite antes do voo CDG–GIG']
+};
 
 const days = [
   { id:'08-it', date:'08/09', weekday:'Terça', title:'Chegada a Nápoles', mood:'Voo, check-in e primeira pizza sem superprogramar.', facts:['Voo Transavia TO3820','Somente bagagem de mão','Táxi oficial branco','Passeio leve à noite'], slots:[
@@ -77,12 +81,20 @@ const days = [
     slot('14:30','Casa-caverna','Mostrar como se vivia nos Sassi.', [p('Casa Grotta','opcional','Museu pequeno dentro de uma antiga casa-caverna.','Ingresso pago','Não precisa','Escolher uma Casa Grotta próxima ao percurso.','https://www.google.com/maps/search/?api=1&query=Casa+Grotta+Matera')]),
     slot('16:30','Retorno a Monopoli','Voltar antes do anoitecer e descansar.', [p('Retorno pela estrada','rotina','Fim do último bate-volta da viagem.','Combustível incluso na estimativa geral','Não precisa','Cerca de 1h15 até Monopoli.','https://www.google.com/maps/dir/Matera/Monopoli')])
   ]},
-  { id:'18', date:'18/09', weekday:'Sexta', title:'Bari + voo para Paris', mood:'Manhã em Bari, devolução do carro e aeroporto com folga.', facts:['Voo AF1289 às 17:30','Check-in limite 16:50','Devolver carro no BRI','Noite na Casa da Camila'], slots:[
+  { id:'18', date:'18/09', weekday:'Sexta', title:'Bari + voo para Paris', mood:'Manhã em Bari, voo para o CDG e pernoite junto ao aeroporto.', facts:['Voo AF1289 às 17:30','Chegada CDG Terminal 2F às 20:05','Devolver carro no BRI','Pernoite no Novotel CDG'], slots:[
     slot('08:00','Check-out em Monopoli','Arrumar malas e seguir para Bari.', [p('Color Dream — check-out','rotina','Encerrar a estadia de cinco noites em Monopoli.','Já pago','Já reservado','Retirar o carro do estacionamento fora da ZTL.','https://www.booking.com/hotel/it/color-dream-residence.pt-br.html')]),
     slot('09:30','Bari Vecchia','Manhã livre no centro histórico.', [p('Bari Vecchia','visita','Ruas antigas, igrejas e atmosfera local antes do voo.','Grátis','Não precisa','Estacionar fora do centro histórico e seguir a pé.','https://www.google.com/maps/search/?api=1&query=Bari+Vecchia')]),
     slot('11:00','Focaccia em Bari','Parada recomendada antes de seguir ao aeroporto.', [p('Panificio Santa Rita','comida','Padaria e pasticceria clássica, nota 4,8.','€ · até €15 por pessoa','Não precisa','Aberta sexta 08:50-14:00 em Bari Vecchia.','https://www.google.com/maps/search/?api=1&query=Panificio+Santa+Rita+Bari')]),
     slot('14:30','Devolução do carro no BRI','Chegar com margem para vistoria e check-in.', [p('Devolução Centauro — Bari Aeroporto','rotina','Fim do aluguel iniciado em Bari Centrale.','Incluído no aluguel','Já reservado após contratação','Do centro de Bari ao aeroporto; prever trânsito e abastecimento.','https://www.google.com/maps/search/?api=1&query=Bari+Airport+car+rental+return')]),
-    slot('17:30','Voo Bari → Paris-CDG','Voo direto Air France, chegada no Terminal 2F.', [p('Air France AF1289','rotina','Voo direto para 3 passageiros, assentos 8A/8B/8C.','Já comprado · R$ 1.665,98','Já reservado · ZK9ABQ','Check-in limite 16:50; chegada prevista em CDG às 20:05.','https://www.airfrance.com.br')])
+    slot('17:30','Voo Bari → Paris-CDG','Voo direto Air France, chegada no Terminal 2F.', [p('Air France AF1289','rotina','Voo direto para 3 passageiros, assentos 8A/8B/8C.','Já comprado · R$ 1.665,98','Já reservado','Check-in limite 16:50; chegada prevista em CDG às 20:05.','https://www.airfrance.com.br')]),
+    slot('20:05','Chegada ao CDG — Terminal 2F','Seguir para a estação do CDGVAL no Terminal 2.', [p('CDGVAL Terminal 2 → Roissypôle','rotina','Trem interno gratuito do aeroporto até a estação próxima ao hotel.','Grátis','Não precisa','Seguir as placas CDGVAL; descer em Terminal 3 / Roissypôle.','https://www.parisaeroport.fr/en/passengers/access/paris-charles-de-gaulle/cdgval')]),
+    slot('21:00','Check-in no Novotel CDG','Dormir junto ao aeroporto para evitar ida e volta ao centro de Paris.', [p('Novotel Paris Charles-de-Gaulle Airport','rotina','Quarto para 3 pessoas com cama de casal e sofá-cama individual, junto à estação Roissypôle.','€144,80 · tarifa consultada em 08/08/2026','Reservar antes','Da estação Roissypôle, seguir a pé até o hotel.','https://all.accor.com/hotel/1014/index.en.shtml')])
+  ]},
+  { id:'19', date:'19/09', weekday:'Sábado', title:'Paris-CDG → Rio', mood:'Café, check-out e embarque internacional com bastante folga.', facts:['Voo AF0442 às 13:20','Terminal 2E','Check-in limite 12:20','Chegar ao terminal por volta das 10:00'], slots:[
+    slot('07:30','Café da manhã e check-out','Começar o dia sem pressa e sair do hotel por volta das 09:30.', [p('Novotel CDG — saída','rotina','Check-out permitido até 12:00, mas sair cedo para o voo internacional.','Café à parte se a tarifa escolhida não incluir','Depende da reserva do hotel','Organizar passaportes e cartões de embarque antes de sair.','https://all.accor.com/hotel/1014/index.en.shtml')]),
+    slot('09:30','CDGVAL para o Terminal 2','Ir de Roissypôle ao Terminal 2 e caminhar até o 2E.', [p('Roissypôle → Terminal 2E','rotina','CDGVAL gratuito seguido de caminhada sinalizada dentro do Terminal 2.','Grátis','Não precisa','Prever 20-30 min entre a saída do hotel e o Terminal 2E.','https://www.parisaeroport.fr/en/passengers/access/paris-charles-de-gaulle/cdgval')]),
+    slot('10:00','Chegada ao Terminal 2E','Despacho, controles e embarque com margem para o voo intercontinental.', [p('Air France — Terminal 2E','rotina','Apresentar documentos e seguir para o portão indicado no cartão de embarque.','Incluído na passagem','Check-in limite 12:20','O terminal ou o portão podem mudar; confirmar no aplicativo da Air France no dia.','https://www.airfrance.com.br')]),
+    slot('13:20','Voo Paris-CDG → Rio-GIG','Voo direto Air France com chegada prevista às 19:40.', [p('Air France AF0442','rotina','Voo CDG–GIG saindo do Terminal 2E.','Já comprado','Já reservado','Chegada ao Aeroporto Internacional do Galeão às 19:40, horário local.','https://www.airfrance.com.br')])
   ]}
 ];
 
@@ -101,7 +113,7 @@ function label(c){return{visita:'Visita',comida:'Comida',compras:'Compras',rotin
 function imgUrl(n){return `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(n+' Itália fotos')}`;}
 function tripUrl(n){return `https://www.tripadvisor.com/Search?q=${encodeURIComponent(n+' Italy')}`;}
 function mapUrl(n){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(n+' Italy')}`;}
-function currentBase(){return Number(active.slice(0,2))<=12?naplesBase:monopoliBase;}
+function currentBase(){if(active==='19')return cdgBase; return Number(active.slice(0,2))<=12?naplesBase:monopoliBase;}
 function render(){const day=days.find(d=>d.id===active);renderBase();renderDays();renderSummary(day);renderFilters();renderTimeline(day);renderDetail(selected);}
 function renderBase(){const base=currentBase();$('#baseTitle').textContent=base.title;$('#baseGrid').innerHTML=base.facts.map(f=>`<span>${f}</span>`).join('');}
 function renderDays(){ $('#dayGrid').innerHTML=days.map(d=>`<button class="day-card ${d.id===active?'is-active':''}" data-day="${d.id}"><time>${d.weekday}<span class="day-number">${d.date}</span></time><strong>${d.title}</strong><span>${d.mood}</span></button>`).join(''); document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{active=b.dataset.day;selected=null;hideModal();render();});}
