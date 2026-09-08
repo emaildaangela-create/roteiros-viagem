@@ -21,19 +21,21 @@
     calendarPanel.scrollIntoView({behavior:smooth(), block:'start'});
   }
 
+  function centerActiveDay(){
+    const activeCard = document.querySelector('.day-card.is-active');
+    const strip = activeCard && activeCard.parentElement;
+    if (!activeCard || !strip || !window.matchMedia('(max-width: 720px)').matches) return;
+    const target = activeCard.offsetLeft - (strip.clientWidth - activeCard.offsetWidth) / 2;
+    strip.scrollTo({left:Math.max(0, target), behavior:smooth()});
+  }
+
   function updateMobileNav(){
     const index = days.findIndex(d => d.id === active);
     const day = days[index];
     if (dayLabel && day) dayLabel.textContent = `${day.date} · ${day.weekday}`;
     if (prevButton) prevButton.disabled = index <= 0;
     if (nextButton) nextButton.disabled = index < 0 || index >= days.length - 1;
-
-    requestAnimationFrame(() => {
-      const activeCard = document.querySelector('.day-card.is-active');
-      if (activeCard && window.matchMedia('(max-width: 720px)').matches) {
-        activeCard.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
-      }
-    });
+    requestAnimationFrame(centerActiveDay);
   }
 
   const originalRenderDays = renderDays;
