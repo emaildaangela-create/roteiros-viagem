@@ -34,7 +34,7 @@
     {
       "name": "Paris",
       "short_name": "Paris",
-      "url": "./index.html?paris=1",
+      "url": "./paris.html",
       "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
     },
     {
