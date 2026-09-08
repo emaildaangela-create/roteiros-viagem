@@ -1,12 +1,14 @@
-const CACHE_NAME = 'roteiros-europa-v7';
+const CACHE_NAME = 'roteiros-europa-v8';
 const APP_SHELL = [
   './',
   './index.html',
+  './paris.html',
   './styles.css',
   './app.js',
   './italia.html',
   './italia.css',
   './italia.js',
+  './italia-personalizado.js',
   './frances.html',
   './frances.css',
   './frances.js',
@@ -42,7 +44,7 @@ self.addEventListener('fetch', event => {
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match(event.request).then(response => response || caches.match('./index.html')))
+        .catch(() => caches.match(event.request).then(response => response || caches.match('./italia.html')))
     );
     return;
   }
