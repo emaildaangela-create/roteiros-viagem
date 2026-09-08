@@ -38,6 +38,47 @@
   hyphens: none;
 }
 
+.mobile-day-nav {
+  display: none;
+}
+
+.modal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.modal-back {
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: var(--paper-strong);
+  color: var(--green);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modal-back:hover {
+  border-color: rgba(116, 41, 58, 0.5);
+}
+
+.modal-nav .modal-close {
+  position: static;
+  flex: 0 0 auto;
+}
+
+.modal-shell .detail-panel {
+  padding-right: 16px;
+}
+
+#calendarPanel,
+#dayWorkspace {
+  scroll-margin-top: 12px;
+}
+
 @media (max-width: 1120px) {
   .day-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -45,6 +86,10 @@
 }
 
 @media (max-width: 720px) {
+  body {
+    padding-bottom: 88px;
+  }
+
   .italy-hero .hero__image {
     background:
       linear-gradient(90deg, rgba(251, 247, 239, 0.96) 0%, rgba(251, 247, 239, 0.82) 52%, rgba(251, 247, 239, 0.22) 100%),
@@ -61,8 +106,126 @@
     flex: 1;
   }
 
+  .calendar-panel {
+    overflow: hidden;
+  }
+
   .day-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    padding: 2px 2px 8px;
+    scrollbar-width: thin;
+  }
+
+  .day-card {
+    flex: 0 0 132px;
+    min-height: 90px;
+    scroll-snap-align: center;
+  }
+
+  .workspace {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-panel {
+    order: 1;
+    width: 100%;
+  }
+
+  .day-summary {
+    order: 2;
+    position: static;
+    width: 100%;
+  }
+
+  .mobile-day-nav {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: 75;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 6px;
+    padding: 7px;
+    border: 1px solid rgba(116, 41, 58, 0.18);
+    border-radius: 16px;
+    background: rgba(255, 253, 248, 0.96);
+    box-shadow: 0 12px 34px rgba(36, 31, 26, 0.2);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobile-day-nav button {
+    min-width: 0;
+    min-height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 7px 8px;
+    background: var(--paper-strong);
+    color: var(--ink);
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .mobile-day-nav button:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .mobile-day-nav .mobile-days-button {
+    display: grid;
+    gap: 2px;
+    align-content: center;
+    background: var(--green);
+    border-color: var(--green);
+    color: #fffdf8;
+  }
+
+  .mobile-days-button span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .mobile-days-button strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.82rem;
+  }
+
+  .modal-overlay {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .modal-shell {
+    min-height: 100dvh;
+    max-width: none;
+    border-radius: 0;
+    padding: 14px 14px calc(28px + env(safe-area-inset-bottom));
+  }
+
+  .modal-nav {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    margin: -4px -4px 8px;
+    padding: 6px 4px 10px;
+    background: linear-gradient(180deg, rgba(255,253,248,0.99) 75%, rgba(255,253,248,0));
+  }
+
+  .modal-back {
+    min-height: 40px;
+    padding-inline: 14px;
+  }
+
+  .modal-shell .detail-panel {
+    padding: 8px 4px 20px;
   }
 }
 
@@ -74,7 +237,7 @@
       var(--hero-image) 68% center / cover no-repeat;
   }
 
-  .day-grid {
-    grid-template-columns: 1fr;
+  .mobile-day-nav button span:not(.mobile-days-button span) {
+    font-size: 0.78rem;
   }
 }
