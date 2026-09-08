@@ -3,7 +3,7 @@
   "short_name": "Europa 2026",
   "description": "Roteiros de Paris e do sul da Itália com agenda, logística e francês prático.",
   "lang": "pt-BR",
-  "start_url": "./index.html",
+  "start_url": "./italia.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
@@ -26,15 +26,15 @@
   ],
   "shortcuts": [
     {
-      "name": "Paris",
-      "short_name": "Paris",
-      "url": "./index.html",
-      "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
-    },
-    {
       "name": "Sul da Itália",
       "short_name": "Itália",
       "url": "./italia.html",
+      "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Paris",
+      "short_name": "Paris",
+      "url": "./index.html?paris=1",
       "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192" }]
     },
     {
