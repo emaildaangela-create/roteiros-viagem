@@ -79,6 +79,65 @@
   scroll-margin-top: 12px;
 }
 
+/* Fichas de guia turístico */
+.tour-guide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.guide-intro {
+  grid-column: 1 / -1;
+}
+
+.guide-intro h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+}
+
+.guide-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(255, 253, 248, 0.76);
+}
+
+.guide-card h4 {
+  margin: 0 0 6px;
+  color: var(--green);
+  font-size: 0.82rem;
+}
+
+.guide-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+.whatsapp-share {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fffdf8;
+  text-decoration: none;
+  font-weight: 850;
+}
+
+.whatsapp-share:hover {
+  color: #fffdf8;
+  border-color: var(--green);
+}
+
+.day-share-button {
+  display: inline-flex;
+  margin-top: 10px;
+}
+
 @media (max-width: 1120px) {
   .day-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -226,6 +285,24 @@
 
   .modal-shell .detail-panel {
     padding: 8px 4px 20px;
+  }
+
+  .tour-guide {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-intro {
+    grid-column: auto;
+  }
+
+  .guide-card {
+    padding: 11px;
+  }
+
+  .whatsapp-share {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 }
 
