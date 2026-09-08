@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="assets/app-icon-192.png" />
     <title>Sul da Itália 2026</title>
-    <link rel="stylesheet" href="italia.css" />
+    <link rel="stylesheet" href="italia.css?v=2" />
   </head>
   <body>
     <header class="hero italy-hero">
@@ -40,7 +40,7 @@
         <div class="base-grid" id="baseGrid"></div>
       </section>
 
-      <section class="panel calendar-panel" aria-labelledby="calendarTitle">
+      <section class="panel calendar-panel" id="calendarPanel" aria-labelledby="calendarTitle">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Calendário</p>
@@ -51,7 +51,7 @@
         <div class="day-grid" id="dayGrid"></div>
       </section>
 
-      <section class="workspace">
+      <section class="workspace" id="dayWorkspace">
         <aside class="panel day-summary" id="daySummary" aria-live="polite"></aside>
         <section class="panel timeline-panel" aria-labelledby="timelineTitle">
           <div class="section-heading">
@@ -66,15 +66,28 @@
       </section>
     </main>
 
+    <nav class="mobile-day-nav" id="mobileDayNav" aria-label="Navegação entre dias">
+      <button type="button" id="prevDayButton" aria-label="Dia anterior">← <span>Anterior</span></button>
+      <button type="button" id="daysButton" class="mobile-days-button" aria-label="Voltar para a lista de dias">
+        <span>Dias</span>
+        <strong id="mobileDayLabel"></strong>
+      </button>
+      <button type="button" id="nextDayButton" aria-label="Próximo dia"><span>Próximo</span> →</button>
+    </nav>
+
     <div class="modal-overlay" id="modalOverlay">
       <div class="panel modal-shell">
-        <button class="modal-close" id="modalClose" type="button" aria-label="Fechar">✕</button>
+        <div class="modal-nav">
+          <button class="modal-back" id="modalBack" type="button">← Voltar</button>
+          <button class="modal-close" id="modalClose" type="button" aria-label="Fechar">✕</button>
+        </div>
         <div class="detail-panel" id="detailPanel" aria-live="polite"></div>
       </div>
     </div>
 
     <script src="italia.js?v=7"></script>
     <script src="italia-personalizado.js?v=1"></script>
+    <script src="italia-nav.js?v=1"></script>
     <script src="pwa.js"></script>
   </body>
 </html>
