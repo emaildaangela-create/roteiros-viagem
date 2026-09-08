@@ -43,14 +43,14 @@
       entry:'É praia pública, sem ingresso. O acesso é feito pelas descidas públicas junto às muralhas. Se forem só para ver o pôr do sol, não precisam levar estrutura de praia.'
     },
     'Polignano a Mare':{
-      getting:'Do Color Dream Residence, ir de carro para Polignano a Mare e estacionar fora do centro histórico. Depois, seguir a pé até Piazza Vittorio Emanuele II.',
+      getting:'Do Color Dream Residence, em Capitolo, são cerca de 15 km / 16 minutos de carro até Polignano a Mare. Estacionem fora do centro histórico e sigam a pé até Piazza Vittorio Emanuele II.',
       entry:'O centro antigo é aberto e gratuito. Entrem pelo Arco Marchesale, a antiga porta da cidade, e sigam pelas ruelas até os mirantes sobre Lama Monachile. Não há bilhete para circular no centro.'
     },
     'Lido em Polignano':{
       entry:'O acesso depende do lido escolhido. Em geral, vocês chegam à recepção, informam a reserva/nome e recebem indicação de espreguiçadeiras e guarda-sol. Confirmem antes se o estacionamento está incluído e se fornecem toalhas.'
     },
     'Ostuni — Cidade Branca':{
-      getting:'Ir de carro desde Capitolo/Monopoli e estacionar abaixo do centro histórico. Evitem tentar subir de carro pelas ruas antigas.',
+      getting:'Do Color Dream Residence/Capitolo são cerca de 32 km / 32 minutos de carro até Ostuni. Estacionem abaixo do centro histórico e evitem tentar subir de carro pelas ruas antigas.',
       entry:'Não há ingresso geral. Comecem em Piazza della Libertà e subam a pé em direção à Catedral pela Via Cattedrale. A graça é justamente entrar nas vielas brancas e se perder um pouco sem roteiro rígido.'
     },
     'Grotte di Castellana':{
@@ -58,7 +58,7 @@
       entry:'A visita é guiada. Primeiro apresentem o ingresso/QR code na área de recepção/bilheteria e depois aguardem a chamada do grupo. Vocês não entram sozinhos na caverna. Se escolherem o percurso completo, reservem cerca de 100 minutos e usem calçado firme.'
     },
     'Sassi di Matera':{
-      getting:'Ir de carro desde Monopoli/Capitolo até Matera e estacionar na cidade moderna, fora da área dos Sassi. Não tentem entrar de carro no núcleo histórico.',
+      getting:'Ir de carro desde Capitolo até Matera e estacionar na cidade moderna, fora da área dos Sassi. Não tentem entrar de carro no núcleo histórico.',
       entry:'Os Sassi são bairros abertos e não exigem ingresso geral. Um ótimo ponto de entrada é Piazza Vittorio Veneto: dali vocês veem o conjunto do alto e descem a pé. Igrejas rupestres, casas-caverna e museus específicos têm bilhetes próprios.'
     },
     'Casa Grotta':{
@@ -87,6 +87,8 @@
     if(gettingCard&&extra.getting){
       const p=gettingCard.querySelector('p');
       if(p) p.textContent=extra.getting;
+      const logisticsParagraph=panel.querySelector('.logistics details p');
+      if(logisticsParagraph) logisticsParagraph.textContent=extra.getting;
     }
     if(extra.entry){
       const entryCard=document.createElement('div');
@@ -96,11 +98,15 @@
       else panel.querySelector('.tour-guide')?.appendChild(entryCard);
     }
     const share=panel.querySelector('.whatsapp-share');
-    if(share&&extra.entry){
+    if(share&&(extra.entry||extra.getting)){
       try{
         const url=new URL(share.href);
-        const current=url.searchParams.get('text')||'';
-        url.searchParams.set('text',`${current}\n\nComo entrar / por onde começar: ${extra.entry}`);
+        let current=url.searchParams.get('text')||'';
+        if(extra.getting){
+          current=current.replace(/Como chegar:[\s\S]*?\n\nO que comprar\/reservar:/,`Como chegar: ${extra.getting}\n\nO que comprar/reservar:`);
+        }
+        if(extra.entry) current+=`\n\nComo entrar / por onde começar: ${extra.entry}`;
+        url.searchParams.set('text',current);
         share.href=url.toString();
       }catch(e){}
     }
