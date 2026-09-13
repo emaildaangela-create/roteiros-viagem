@@ -260,6 +260,8 @@
   .modal-overlay {
     padding: 0;
     align-items: stretch;
+    background: var(--paper-strong);
+    overscroll-behavior: contain;
   }
 
   .modal-shell {
@@ -267,6 +269,13 @@
     max-width: none;
     border-radius: 0;
     padding: 14px 14px calc(28px + env(safe-area-inset-bottom));
+    background: var(--paper-strong);
+    backdrop-filter: none;
+    isolation: isolate;
+  }
+
+  body.modal-open .mobile-day-nav {
+    display: none;
   }
 
   .modal-nav {
@@ -297,6 +306,7 @@
 
   .guide-card {
     padding: 11px;
+    background: var(--paper-strong);
   }
 
   .whatsapp-share {
