@@ -78,6 +78,119 @@
     ];
   }
 
+
+  // Roteiro recalculado em 15/09 após a perda do dia 14.
+  const dia15=days.find(d=>d.id==='15');
+  if(dia15){
+    dia15.title='Alberobello + Monopoli';
+    dia15.mood='Recuperar o passeio perdido de ontem sem atravessar a região: trulli primeiro e Monopoli no fim da tarde.';
+    dia15.facts=['Saída assim que o carro estiver liberado','Ideal: deixar Capitolo até 10:30','Alberobello a pé','Monopoli no fim da tarde','Atenção à possibilidade de chuva'];
+    dia15.slots=[
+      slot('10:30','Capitolo → Alberobello','Saída ajustável conforme a liberação do carro; evitem entrar nas ZTL.',[
+        p('Carro até Alberobello','rotina','Trajeto curto desde a hospedagem para recuperar a programação perdida do dia 14.','Combustível e estacionamento','Não precisa','Sair do Color Dream Residence e estacionar fora da área dos trulli. Se o carro só for liberado depois de 13:30, priorizar Monopoli hoje e transferir Alberobello para a manhã do dia 16.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Alberobello')
+      ]),
+      slot('11:15','Rione Monti + Aia Piccola','Percorrer os dois conjuntos de trulli sem transformar o passeio em corrida.',[
+        p('Trulli de Alberobello','visita','Casas de pedra com telhados cônicos, Patrimônio Mundial da UNESCO.','Grátis nas ruas; interiores à parte','Não precisa','Começar no Largo Martellotta, subir pelo Rione Monti e atravessar para Aia Piccola.','https://www.google.com/maps/search/?api=1&query=Rione+Monti+Alberobello')
+      ]),
+      slot('14:00','Almoço em Alberobello','Fazer uma refeição simples antes de voltar para Capitolo.',[
+        p('Almoço em Alberobello','comida','Orecchiette e pratos puglianos no centro.','€€','Reserva recomendada','Escolher um restaurante perto do Largo Martellotta para não perder tempo com deslocamento.','https://www.google.com/maps/search/?api=1&query=ristoranti+Largo+Martellotta+Alberobello')
+      ]),
+      slot('16:00','Pausa no Color Dream','Descansar e sair novamente no melhor horário para Monopoli.',[
+        p('Color Dream Residence — pausa','rotina','Volta curta à hospedagem para descansar antes do passeio urbano.','Sem custo','Não precisa','Alberobello → Capitolo de carro.','https://www.google.com/maps/dir/Alberobello/Color+Dream+Residence+Monopoli')
+      ]),
+      slot('17:30','Centro histórico + Porto Antico','Conhecer Monopoli com luz bonita e temperatura mais agradável.',[
+        p('Centro histórico de Monopoli','visita','Vielas claras, muralhas e praças junto ao Adriático.','Grátis','Não precisa','Estacionar fora da ZTL e entrar a pé pela região de Porta Vecchia.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Monopoli'),
+        p('Porto Antico di Monopoli','visita','Pequeno porto de pescadores com barcos azuis tradicionais.','Grátis','Não precisa','Seguir a pé desde Piazza Garibaldi.','https://www.google.com/maps/search/?api=1&query=Porto+Antico+Monopoli')
+      ]),
+      slot('19:30','Jantar em Monopoli','Encerrar o dia perto da hospedagem.',[
+        p('Jantar em Monopoli','comida','Pizza, massa ou frutos do mar no centro histórico.','€€','Reserva recomendada','Escolher um restaurante dentro do centro para continuar a pé.','https://www.google.com/maps/search/?api=1&query=ristoranti+Centro+Storico+Monopoli')
+      ])
+    ];
+  }
+
+  const dia16=days.find(d=>d.id==='16');
+  if(dia16){
+    dia16.title='Polignano a Mare + praia + Ostuni';
+    dia16.mood='Praia no melhor período do dia e Ostuni no fim da tarde, juntando dois passeios costeiros sem grande desvio.';
+    dia16.facts=['Polignano pela manhã','Lido com banheiro e estrutura','Banho e troca de roupa antes de Ostuni','Ostuni no fim da tarde','Levar roupa seca'];
+    dia16.slots=[
+      slot('08:45','Capitolo → Polignano a Mare','Chegar antes do movimento maior e estacionar fora do centro.',[
+        p('Carro até Polignano a Mare','rotina','Trajeto curto pela costa desde Capitolo.','Combustível e estacionamento','Não precisa','Procurar estacionamento fora da ZTL e seguir a pé.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Polignano+a+Mare')
+      ]),
+      slot('09:30','Centro histórico e mirantes','Passear pela aldeia sobre as falésias antes da praia.',[
+        p('Polignano a Mare','visita','Centro branco, falésias e mirantes sobre Lama Monachile.','Grátis','Não precisa','Fazer o percurso a pé e deixar o banho de mar para um lido com apoio.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Polignano+a+Mare')
+      ]),
+      slot('11:30','Lido com estrutura','Praia com banheiro, ducha e lugar para trocar de roupa.',[
+        p('Lido em Polignano','visita','Estrutura mais confortável para a família antes de seguir para outra cidade.','Pago; consultar diária','Reservar recomendado','Escolher um lido com estacionamento, ducha e cabine. Tomar banho e vestir roupa seca antes de sair.','https://www.google.com/maps/search/?api=1&query=lido+con+doccia+Polignano+a+Mare')
+      ]),
+      slot('15:30','Polignano → Ostuni','Seguir para a Cidade Branca depois de todos já estarem secos e trocados.',[
+        p('Carro até Ostuni','rotina','Deslocamento costeiro de aproximadamente 45–55 minutos.','Combustível e estacionamento','Não precisa','Estacionar fora do centro histórico; não entrar na ZTL.','https://www.google.com/maps/dir/Polignano+a+Mare/Ostuni')
+      ]),
+      slot('16:30','Ostuni — Cidade Branca','Caminhar pelas ruas caiadas e ver o fim de tarde nos mirantes.',[
+        p('Centro histórico de Ostuni','visita','Casario branco medieval, escadarias e vistas sobre oliveiras até o Adriático.','Grátis','Não precisa','Subir a pé até a Catedral e voltar pelas vielas e mirantes.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Ostuni')
+      ]),
+      slot('19:00','Jantar em Ostuni','Jantar cedo antes do retorno a Capitolo.',[
+        p('Jantar em Ostuni','comida','Cozinha pugliana no centro histórico.','€€','Reserva recomendada','Escolher mesa no centro e retornar depois pela estrada costeira.','https://www.google.com/maps/search/?api=1&query=ristoranti+Centro+Storico+Ostuni')
+      ])
+    ];
+  }
+
+  const dia17=days.find(d=>d.id==='17');
+  if(dia17){
+    dia17.title='Matera — dia inteiro';
+    dia17.mood='Deixar Matera sozinha no dia para caminhar pelos Sassi com calma e sem encaixes artificiais.';
+    dia17.facts=['Saída às 08:00','Cerca de 1h15 de carro','Sassi a pé','Tênis firme','Casa Grotta opcional'];
+    dia17.slots=[
+      slot('08:00','Capitolo → Matera','Sair cedo e estacionar fora dos Sassi e da ZTL.',[
+        p('Carro até Matera','rotina','Bate-volta até a Basilicata.','Combustível e estacionamento à parte','Não precisa','Usar estacionamento fora do centro histórico e seguir a pé.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Matera')
+      ]),
+      slot('09:30','Belvedere + Sassi','Começar pela vista geral e descer com calma pelos bairros históricos.',[
+        p('Sassi di Matera','visita','Bairros escavados na rocha e ocupados há milênios, Patrimônio Mundial.','Grátis nas áreas públicas','Não precisa','Percurso com pedras, escadas e ladeiras; usar tênis firme.','https://www.google.com/maps/search/?api=1&query=Sassi+di+Matera')
+      ]),
+      slot('12:30','Almoço em Matera','Pausa no meio do percurso.',[
+        p('Almoço com vista para os Sassi','comida','Cozinha local em uma área histórica singular.','€€','Reserva recomendada','Reservar mesa perto do percurso para evitar subidas extras.','https://www.google.com/maps/search/?api=1&query=ristorante+vista+Sassi+Matera')
+      ]),
+      slot('14:30','Casa Grotta + igrejas rupestres','Entender como as famílias viviam e completar o passeio histórico.',[
+        p('Casa Grotta','visita','Pequeno museu dentro de uma antiga casa-caverna mobiliada.','Ingresso pago','Normalmente na hora','Escolher uma opção próxima ao percurso dos Sassi.','https://www.google.com/maps/search/?api=1&query=Casa+Grotta+Matera'),
+        p('Igreja rupestre','opcional','Templo escavado na rocha, característico da história religiosa de Matera.','Ingresso pago','Consultar no local','Escolher apenas uma para preservar o ritmo do dia.','https://www.google.com/maps/search/?api=1&query=chiesa+rupestre+Matera')
+      ]),
+      slot('17:00','Retorno a Capitolo','Voltar antes de escurecer e preparar as malas.',[
+        p('Matera → Color Dream Residence','rotina','Retorno à hospedagem para a última noite.','Combustível','Não precisa','Prever cerca de 1h15–1h30 e deixar as malas organizadas para o check-out.','https://www.google.com/maps/dir/Matera/Color+Dream+Residence+Monopoli')
+      ])
+    ];
+  }
+
+  const dia18=days.find(d=>d.id==='18');
+  if(dia18){
+    dia18.title='Bari Vecchia + aeroporto';
+    dia18.mood='Última visita totalmente urbana: nada de praia, para seguir direto ao aeroporto sem precisar tomar banho.';
+    dia18.facts=['Check-out às 08:00','Passeio sem praia','Bari Vecchia a pé','Devolver carro às 14:30','Voo AF1289 às 17:30'];
+    dia18.slots=[
+      slot('08:00','Check-out e saída para Bari','Sair com as malas prontas e seguir diretamente para a cidade.',[
+        p('Color Dream Residence — check-out','rotina','Encerrar a estadia em Capitolo e colocar toda a bagagem no carro.','Já pago','Já reservado','Conferir quartos, documentos, carregadores e itens de Valentina antes de sair.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Bari')
+      ]),
+      slot('09:15','Bari Vecchia','Passeio urbano pelas ruas antigas, sem banho de mar.',[
+        p('Bari Vecchia','visita','Centro histórico de Bari, com vielas, igrejas e mulheres fazendo orecchiette nas portas das casas.','Grátis','Não precisa','Estacionar fora da ZTL; não deixar itens visíveis dentro do carro. Seguir a pé.','https://www.google.com/maps/search/?api=1&query=Bari+Vecchia'),
+        p('Basílica de San Nicola','visita','Basílica românica que guarda as relíquias de São Nicolau.','Grátis','Não precisa','Fica dentro de Bari Vecchia e entra naturalmente no percurso a pé.','https://www.google.com/maps/search/?api=1&query=Basilica+San+Nicola+Bari')
+      ]),
+      slot('11:30','Focaccia e almoço leve','Comer antes de seguir ao aeroporto.',[
+        p('Focaccia barese','comida','Especialidade local prática para o último almoço.','€','Não precisa','Parar em uma padaria dentro de Bari Vecchia; evitar almoço demorado.','https://www.google.com/maps/search/?api=1&query=focaccia+barese+Bari+Vecchia')
+      ]),
+      slot('12:30','Passeio final + saída','Última caminhada curta e retorno ao carro com folga.',[
+        p('Lungomare de Bari','visita','Calçadão urbano com vista do Adriático, sem entrar na praia.','Grátis','Não precisa','Fazer apenas um trecho curto e sair de Bari até 13:30.','https://www.google.com/maps/search/?api=1&query=Lungomare+di+Bari')
+      ]),
+      slot('13:30','Bari → Aeroporto BRI','Seguir para a locadora, prevendo trânsito e abastecimento.',[
+        p('Deslocamento ao aeroporto','rotina','Margem para abastecer corretamente, devolver o carro e usar o shuttle.','Combustível final','Não precisa','Confirmar no contrato qual combustível usar e guardar o comprovante do último abastecimento.','https://www.google.com/maps/dir/Bari+Vecchia/Bari+Airport')
+      ]),
+      slot('14:30','Devolução do carro — Centauro','Chegar com três horas de antecedência para vistoria e traslado ao terminal.',[
+        p('Centauro Bari Aeroporto','rotina','Devolução do carro e shuttle até o terminal.','Incluído no aluguel','Já reservado','Fotografar carro, painel e nível de combustível antes de entregar; guardar o comprovante.','https://www.google.com/maps/search/?api=1&query=Centauro+Bari+Airport')
+      ]),
+      slot('17:30','Voo Bari → Paris-CDG','Voo direto Air France AF1289.',[
+        p('Air France AF1289','rotina','Voo para Paris, chegada prevista às 20:05 no Terminal 2F.','Já comprado','Já reservado','Check-in limite 16:50; seguir para o portão indicado no aplicativo.','https://www.airfrance.com.br')
+      ])
+    ];
+  }
+
   selected=null;
   render();
 })();
