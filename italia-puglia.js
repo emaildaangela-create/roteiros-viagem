@@ -281,6 +281,44 @@
     ];
   }
 
+
+  // Ajuste após conclusão de Alberobello e Monopoli em 15/09.
+  if(dia15){
+    dia15.title='✅ Alberobello + Monopoli';
+    dia15.mood='Passeios concluídos em 15/09.';
+    dia15.facts=['Alberobello visitada','Rione Monti e Aia Piccola','Monopoli visitada','Centro histórico e Porto Antico'];
+  }
+
+  if(dia18){
+    dia18.title='Ostuni + aeroporto';
+    dia18.mood='Última visita urbana e sem praia: conhecer a Cidade Branca e seguir diretamente ao aeroporto.';
+    dia18.facts=['Check-out às 08:00','Ostuni pela manhã','Nada de praia','Sair para o aeroporto até 12:30','Devolver carro às 14:00','Voo AF1289 às 17:30'];
+    dia18.slots=[
+      slot('08:00','Check-out em Capitolo','Colocar as malas no carro e conferir toda a hospedagem antes de sair.',[
+        p('Color Dream Residence — check-out','rotina','Encerrar a estadia e deixar toda a bagagem pronta para o voo.','Já pago','Já reservado','Conferir documentos, carregadores e itens de Valentina. Não deixar objetos visíveis no carro durante o passeio.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Ostuni')
+      ]),
+      slot('08:40','Capitolo → Ostuni','Seguir para a Cidade Branca e estacionar fora da ZTL.',[
+        p('Carro até Ostuni','rotina','Deslocamento curto para o último passeio da Puglia.','Combustível e estacionamento','Não precisa','Usar estacionamento fora do centro histórico e manter as malas fora da vista.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Ostuni')
+      ]),
+      slot('09:30','Centro histórico de Ostuni','Caminhar pelas ruas caiadas, escadarias e mirantes.',[
+        p('Ostuni — Cidade Branca','visita','Casario branco medieval sobre uma colina, com vistas das oliveiras até o Adriático.','Grátis','Não precisa','Começar pela Piazza della Libertà, subir até a Catedral e retornar pelas vielas.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Ostuni'),
+        p('Catedral de Ostuni','visita','Catedral do século XV com fachada ornamentada e grande rosácea.','Entrada geralmente gratuita','Não precisa','Fica no ponto alto do centro histórico e entra naturalmente no percurso.','https://www.google.com/maps/search/?api=1&query=Cattedrale+di+Ostuni')
+      ]),
+      slot('11:30','Almoço rápido em Ostuni','Comer sem serviço demorado antes da estrada.',[
+        p('Almoço rápido','comida','Focaccia, panzerotto ou massa em uma refeição curta.','€–€€','Não precisa','Escolher perto do estacionamento e estar no carro até 12:30.','https://www.google.com/maps/search/?api=1&query=pranzo+veloce+Ostuni')
+      ]),
+      slot('12:30','Ostuni → Aeroporto de Bari','Sair com margem para estrada, abastecimento correto e devolução.',[
+        p('Deslocamento ao aeroporto BRI','rotina','Trajeto direto de Ostuni ao Aeroporto de Bari.','Combustível final','Não precisa','Prever aproximadamente 1h15. Confirmar no contrato o combustível correto e guardar o comprovante.','https://www.google.com/maps/dir/Ostuni/Bari+Airport')
+      ]),
+      slot('14:00','Devolução do carro — Centauro','Chegar com bastante folga para vistoria e shuttle até o terminal.',[
+        p('Centauro Bari Aeroporto','rotina','Devolução do carro antes do voo para Paris.','Incluído no aluguel','Já reservado','Fotografar o carro, o painel e o nível do combustível antes da entrega; guardar o comprovante.','https://www.google.com/maps/search/?api=1&query=Centauro+Bari+Airport')
+      ]),
+      slot('17:30','Voo Bari → Paris-CDG','Voo direto Air France AF1289.',[
+        p('Air France AF1289','rotina','Voo para Paris, chegada prevista às 20:05 no Terminal 2F.','Já comprado','Já reservado','Check-in limite 16:50; seguir para o portão indicado no aplicativo.','https://www.airfrance.com.br')
+      ])
+    ];
+  }
+
   selected=null;
   render();
 })();
