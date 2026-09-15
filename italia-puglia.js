@@ -246,6 +246,41 @@
     ];
   }
 
+
+  // Encaixe solicitado: Grotte di Castellana + praia em Polignano no mesmo dia.
+  if(dia16){
+    dia16.title='Castellana Grotte + Polignano + praia';
+    dia16.mood='A gruta é a prioridade da manhã; depois, almoço e praia com estrutura em Polignano a Mare.';
+    dia16.facts=['Comprar ingresso da gruta antes','Preferência pelo percurso completo','Levar tênis e casaco leve','Polignano depois do almoço','Lido com ducha e cabine','Levar roupa seca'];
+    dia16.slots=[
+      slot('08:30','Capitolo → Castellana Grotte','Sair cedo para estacionar e chegar antes do horário marcado.',[
+        p('Carro até Grotte di Castellana','rotina','Trajeto curto para o interior da Puglia.','Combustível e estacionamento','Não precisa','Sair do Color Dream Residence com margem e seguir diretamente à entrada oficial das grutas.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Grotte+di+Castellana')
+      ]),
+      slot('09:30','Chegada e retirada dos ingressos','Usar banheiro, organizar casacos e apresentar-se antes do passeio.',[
+        p('Grotte di Castellana — entrada','rotina','Complexo turístico com visitas guiadas em horários determinados.','Conforme ingresso','Comprar antes','Chegar pelo menos 20–30 minutos antes do horário escolhido. Confirmar o idioma da visita e o ponto de encontro.','https://www.grottedicastellana.it/en/')
+      ]),
+      slot('10:00','Percurso completo das grutas','Fazer a visita principal, incluindo as formações mais marcantes e a Gruta Branca.',[
+        p('Grotte di Castellana — percurso completo','visita','Sistema de cavernas com grandes salões, estalactites, estalagmites e a famosa Gruta Branca.','Family: consultar valor atual no site','Reservar para a manhã de 16/09','O percurso completo leva aproximadamente 1h40. Usar tênis com boa aderência e levar casaco leve: o interior é fresco e úmido.','https://www.grottedicastellana.it/en/')
+      ]),
+      slot('12:00','Castellana → Polignano a Mare','Seguir para a costa depois da visita.',[
+        p('Carro até Polignano a Mare','rotina','Deslocamento curto entre as grutas e a costa.','Combustível e estacionamento','Não precisa','Prever cerca de 25–30 minutos e estacionar fora da ZTL.','https://www.google.com/maps/dir/Grotte+di+Castellana/Polignano+a+Mare')
+      ]),
+      slot('12:45','Almoço em Polignano','Comer antes de ir para o lido.',[
+        p('Almoço em Polignano','comida','Refeição simples para não reduzir demais o tempo de praia.','€–€€','Reserva recomendada','Escolher restaurante próximo ao estacionamento ou ao lido.','https://www.google.com/maps/search/?api=1&query=ristoranti+Polignano+a+Mare')
+      ]),
+      slot('14:00','Praia com estrutura','Passar a tarde em um lido com banheiro, ducha e cabine.',[
+        p('Lido em Polignano','visita','Praia com espreguiçadeiras e estrutura para a família.','Pago; consultar diária','Reservar recomendado','Escolher um lido com estacionamento, ducha e cabine; confirmar que ainda funciona em setembro.','https://www.google.com/maps/search/?api=1&query=lido+con+doccia+Polignano+a+Mare')
+      ]),
+      slot('17:30','Centro histórico e mirantes','Tomar banho no lido, trocar de roupa e terminar o dia no centro.',[
+        p('Centro histórico de Polignano a Mare','visita','Vielas brancas e mirantes sobre as falésias e Lama Monachile.','Grátis','Não precisa','Ir ao centro somente depois de todos estarem secos e trocados.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Polignano+a+Mare')
+      ]),
+      slot('19:00','Gelato ou jantar','Encerrar o passeio antes de voltar a Capitolo.',[
+        p('Gelato em Polignano','comida','Pausa rápida no centro histórico.','€','Não precisa','Fazer a parada a pé durante o passeio final.','https://www.google.com/maps/search/?api=1&query=gelato+Polignano+a+Mare'),
+        p('Jantar em Polignano','comida','Alternativa se quiserem ficar até a noite.','€€','Reserva recomendada','Escolher perto do centro e voltar depois para Capitolo.','https://www.google.com/maps/search/?api=1&query=ristoranti+Centro+Storico+Polignano+a+Mare')
+      ])
+    ];
+  }
+
   selected=null;
   render();
 })();
