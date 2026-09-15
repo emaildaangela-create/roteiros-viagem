@@ -191,6 +191,61 @@
     ];
   }
 
+
+  // Ajuste final: Alberobello no dia do aeroporto; 15/09 fica próximo da base.
+  if(dia15){
+    dia15.title='Monopoli + Ostuni';
+    dia15.mood='Começar perto da hospedagem enquanto o carro é resolvido e seguir para Ostuni no meio da tarde.';
+    dia15.facts=['Manhã flexível em Monopoli','Sem praia','Ostuni no fim da tarde','Plano compatível com eventual atraso do carro','Atenção à possibilidade de chuva'];
+    dia15.slots=[
+      slot('10:30','Monopoli — centro histórico e porto','Começar pelo passeio mais próximo da hospedagem; o horário pode avançar se o carro demorar.',[
+        p('Centro histórico de Monopoli','visita','Vielas claras, muralhas e pequenas praças junto ao Adriático.','Grátis','Não precisa','Ir de Capitolo até a borda do centro, estacionar fora da ZTL e entrar a pé por Porta Vecchia.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Monopoli'),
+        p('Porto Antico di Monopoli','visita','Porto de pescadores com barcos azuis tradicionais aos pés da cidade antiga.','Grátis','Não precisa','Seguir a pé desde Piazza Garibaldi.','https://www.google.com/maps/search/?api=1&query=Porto+Antico+Monopoli')
+      ]),
+      slot('13:00','Almoço em Monopoli','Comer no centro antes de pegar a estrada.',[
+        p('Almoço em Monopoli','comida','Pizza, massa ou frutos do mar em um ponto central.','€€','Reserva recomendada','Escolher um restaurante dentro do centro histórico e retornar ao carro depois.','https://www.google.com/maps/search/?api=1&query=ristoranti+Centro+Storico+Monopoli')
+      ]),
+      slot('15:00','Monopoli → Ostuni','Seguir para a Cidade Branca e estacionar fora da ZTL.',[
+        p('Carro até Ostuni','rotina','Deslocamento de aproximadamente 35–45 minutos.','Combustível e estacionamento','Não precisa','Usar um estacionamento fora do centro histórico e fazer o restante a pé.','https://www.google.com/maps/dir/Monopoli/Ostuni')
+      ]),
+      slot('16:00','Ostuni — Cidade Branca','Caminhar pelas ruas caiadas, escadarias e mirantes.',[
+        p('Centro histórico de Ostuni','visita','Casario branco medieval e vistas sobre o vale de oliveiras até o Adriático.','Grátis','Não precisa','Subir a pé até a Catedral e descer pelas vielas e mirantes.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Ostuni')
+      ]),
+      slot('19:00','Jantar em Ostuni','Jantar cedo antes de voltar para Capitolo.',[
+        p('Jantar em Ostuni','comida','Cozinha pugliana no centro histórico.','€€','Reserva recomendada','Escolher mesa no centro e retornar depois para a hospedagem.','https://www.google.com/maps/search/?api=1&query=ristoranti+Centro+Storico+Ostuni')
+      ])
+    ];
+  }
+
+  if(dia18){
+    dia18.title='Alberobello + aeroporto';
+    dia18.mood='Última visita seca e compacta entre o check-out e o voo, seguindo depois diretamente ao aeroporto sem precisar tomar banho.';
+    dia18.facts=['Check-out às 08:00','Alberobello pela manhã','Nada de praia','Sair para o aeroporto até 12:30','Devolver carro às 14:00','Voo AF1289 às 17:30'];
+    dia18.slots=[
+      slot('08:00','Check-out em Capitolo','Colocar as malas no carro e conferir todos os quartos antes de sair.',[
+        p('Color Dream Residence — check-out','rotina','Encerrar a estadia e deixar toda a bagagem pronta para o voo.','Já pago','Já reservado','Conferir documentos, carregadores e itens de Valentina. Não deixar objetos visíveis no carro durante o passeio.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Alberobello')
+      ]),
+      slot('08:45','Capitolo → Alberobello','Chegar cedo, estacionar fora da zona histórica e entrar a pé.',[
+        p('Carro até Alberobello','rotina','Primeiro trecho do dia da volta, antes de seguir ao aeroporto.','Combustível e estacionamento','Não precisa','Usar estacionamento oficial próximo ao Largo Martellotta e evitar qualquer ZTL.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Alberobello')
+      ]),
+      slot('09:30','Rione Monti + Aia Piccola','Ver os trulli principais em um percurso concentrado de cerca de duas horas.',[
+        p('Trulli de Alberobello','visita','Bairros de casas de pedra com telhados cônicos, Patrimônio Mundial da UNESCO.','Grátis nas ruas; interiores à parte','Não precisa','Começar pelo Largo Martellotta, subir pelo Rione Monti e atravessar para Aia Piccola. Não encaixar museus longos neste dia.','https://www.google.com/maps/search/?api=1&query=Rione+Monti+Alberobello')
+      ]),
+      slot('11:30','Almoço rápido em Alberobello','Fazer uma refeição simples antes de pegar a estrada.',[
+        p('Almoço rápido','comida','Focaccia, panzerotto ou massa sem serviço demorado.','€–€€','Não precisa','Comer perto do estacionamento e estar de volta ao carro até 12:30.','https://www.google.com/maps/search/?api=1&query=pranzo+veloce+Alberobello')
+      ]),
+      slot('12:30','Alberobello → Aeroporto de Bari','Sair com margem ampla para estrada, abastecimento correto e devolução.',[
+        p('Deslocamento ao aeroporto BRI','rotina','Trajeto direto de Alberobello ao Aeroporto de Bari.','Combustível final','Não precisa','Prever cerca de 1h10, confirmar no contrato o combustível correto e guardar o comprovante.','https://www.google.com/maps/dir/Alberobello/Bari+Airport')
+      ]),
+      slot('14:00','Devolução do carro — Centauro','Chegar com bastante folga para vistoria e shuttle até o terminal.',[
+        p('Centauro Bari Aeroporto','rotina','Devolução do carro antes do voo para Paris.','Incluído no aluguel','Já reservado','Fotografar o carro, o painel e o nível do combustível antes da entrega; guardar o comprovante.','https://www.google.com/maps/search/?api=1&query=Centauro+Bari+Airport')
+      ]),
+      slot('17:30','Voo Bari → Paris-CDG','Voo direto Air France AF1289.',[
+        p('Air France AF1289','rotina','Voo para Paris, chegada prevista às 20:05 no Terminal 2F.','Já comprado','Já reservado','Check-in limite 16:50; seguir para o portão indicado no aplicativo.','https://www.airfrance.com.br')
+      ])
+    ];
+  }
+
   selected=null;
   render();
 })();
