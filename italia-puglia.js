@@ -319,6 +319,55 @@
     ];
   }
 
+
+  // Plano final sem Matera: Polignano em 16/09, Castellana em 17/09 e Ostuni em 18/09.
+  if(dia16){
+    dia16.title='Polignano a Mare + praia';
+    dia16.mood='Centro histórico pela manhã, almoço durante a instabilidade e praia quando o sol voltar à tarde.';
+    dia16.facts=['Centro e mirantes primeiro','Possibilidade de chuva entre 13h e 15h','Lido a partir das 15h','Escolher estrutura com ducha e cabine','Levar roupa seca'];
+    dia16.slots=[
+      slot('10:00','Capitolo → Polignano a Mare','Ir direto ao centro e estacionar fora da ZTL.',[
+        p('Carro até Polignano a Mare','rotina','Trajeto curto pela costa desde Capitolo.','Combustível e estacionamento','Não precisa','Estacionar fora da ZTL e seguir a pé.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Polignano+a+Mare')
+      ]),
+      slot('10:30','Centro histórico e mirantes','Aproveitar o período mais firme antes da chuva prevista para o início da tarde.',[
+        p('Centro histórico de Polignano','visita','Vielas brancas e terraços sobre as falésias do Adriático.','Grátis','Não precisa','Percorrer os mirantes e ver Lama Monachile do alto.','https://www.google.com/maps/search/?api=1&query=Centro+Storico+Polignano+a+Mare'),
+        p('Lama Monachile — mirante','visita','Vista clássica da pequena praia entre falésias.','Grátis','Não precisa','Observar do alto; o banho fica para o lido com estrutura.','https://www.google.com/maps/search/?api=1&query=Lama+Monachile+Polignano')
+      ]),
+      slot('12:45','Almoço em Polignano','Fazer uma pausa longa caso chova entre 13h e 15h.',[
+        p('Almoço em Polignano','comida','Refeição abrigada antes da praia.','€–€€','Reserva recomendada','Escolher restaurante no centro ou próximo ao estacionamento e acompanhar o tempo.','https://www.google.com/maps/search/?api=1&query=ristoranti+Polignano+a+Mare')
+      ]),
+      slot('15:00','Praia com estrutura','Seguir ao lido quando o tempo melhorar.',[
+        p('Lido em Polignano','visita','Praia com espreguiçadeiras, banheiro, ducha e cabine.','Pago; consultar diária','Confirmar funcionamento antes de ir','Escolher um lido aberto em setembro com estacionamento. Tomar banho e trocar de roupa antes de sair.','https://www.google.com/maps/search/?api=1&query=lido+con+doccia+Polignano+a+Mare')
+      ]),
+      slot('18:00','Gelato e retorno','Encerrar com uma parada rápida antes de voltar a Capitolo.',[
+        p('Gelato em Polignano','comida','Parada curta no fim do passeio.','€','Não precisa','Se já estiverem cansados, voltar diretamente para a hospedagem.','https://www.google.com/maps/search/?api=1&query=gelato+Polignano+a+Mare')
+      ])
+    ];
+  }
+
+  if(dia17){
+    dia17.title='Grotte di Castellana';
+    dia17.mood='Dia leve dedicado à visita completa das cavernas, com tarde livre para descansar e organizar a viagem.';
+    dia17.facts=['Comprar ingresso antecipado','Preferir visita completa pela manhã','Percurso de cerca de 3 km e 1h40','Levar tênis e casaco leve','Tarde livre'];
+    dia17.slots=[
+      slot('08:45','Capitolo → Castellana Grotte','Sair com margem para estacionar e chegar antes do horário marcado.',[
+        p('Carro até Grotte di Castellana','rotina','Trajeto curto para o interior da Puglia.','Combustível e estacionamento','Não precisa','Chegar 20–30 minutos antes do horário escolhido.','https://www.google.com/maps/dir/Color+Dream+Residence+Monopoli/Grotte+di+Castellana')
+      ]),
+      slot('09:30','Chegada e retirada dos ingressos','Usar banheiro, organizar os casacos e localizar o ponto de encontro.',[
+        p('Entrada das Grotte di Castellana','rotina','Complexo turístico com visitas guiadas em horários determinados.','Conforme ingresso','Comprar antes','Confirmar idioma e horário da visita.','https://www.grottedicastellana.it/informazioni-utili/orari-e-prezzi/')
+      ]),
+      slot('10:00','Percurso completo','Conhecer os grandes salões e chegar até a famosa Gruta Branca.',[
+        p('Grotte di Castellana — visita completa','visita','Percurso subterrâneo de aproximadamente 3 km entre estalactites, estalagmites e grandes cavernas.','Adulto cerca de €25; reduzido cerca de €22','Reservar para a manhã de 17/09','Duração aproximada de 1h40. Usar tênis aderente e casaco leve; a temperatura interna fica entre 14 e 18 °C.','https://www.grottedicastellana.it/informazioni-utili/itinerari-di-visita/')
+      ]),
+      slot('12:15','Almoço perto das grutas','Comer sem pressa depois do percurso.',[
+        p('Almoço em Castellana Grotte','comida','Refeição próxima à atração antes de retornar.','€–€€','Não precisa','Escolher entre os restaurantes próximos à entrada.','https://www.google.com/maps/search/?api=1&query=ristoranti+vicino+Grotte+di+Castellana')
+      ]),
+      slot('14:00','Retorno a Capitolo + tarde livre','Descansar, aproveitar a hospedagem e começar a organizar as malas.',[
+        p('Tarde livre no Color Dream','rotina','Pausa depois dos dias de deslocamento, sem incluir outra cidade.','Sem custo','Não precisa','Voltar diretamente para Capitolo.','https://www.google.com/maps/dir/Grotte+di+Castellana/Color+Dream+Residence+Monopoli')
+      ])
+    ];
+  }
+
   selected=null;
   render();
 })();
